@@ -1,0 +1,6 @@
+---
+# vars file for jump_host
+jump_account: 'jump'
+jump_account_id: '2000'
+jump_account_pw: "{{ sec_jump_account_pw }}"
+...

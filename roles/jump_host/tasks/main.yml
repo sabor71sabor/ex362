@@ -1,0 +1,18 @@
+---
+# tasks file for jump_host
+- name: user | Create jump jump_account
+  ansible.builtin.user:
+    name: "{{ jump_account }}"
+    password: "{{ jump_account_pw | password_hash('sha512') }}"
+    uid: "{{ jump_account_id }}"
+    update_password: on_create
+  no_log: True
+  become: True
+
+- name: authorized_key | Set authorized key taken from file
+  ansible.posix.authorized_key:
+    user: "{{ jump_account }}"
+    state: present
+    key: "{{ lookup('file', '~/.ssh/id_ecdsa.pub') }}"
+  become: True
+...

@@ -1,0 +1,12 @@
+#{{ ansible_managed }}
+{% if item.key == 'local' %}
+{% if item.value.options %}
+{% for option in item.value.options %}
+{{ option }}
+{% endfor %}
+{% endif %}
+{% else %}
+{% for server in item.value.server %}
+server={{ server }}
+{% endfor %}
+{% endif %}

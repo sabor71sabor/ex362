@@ -1,0 +1,9 @@
+---
+# handlers file for dnsmasq
+- name: Restart dnsmasq.service
+  ansible.builtin.systemd:
+    enabled: True
+    name: dnsmasq.service
+    state: restarted
+  become: True
+...

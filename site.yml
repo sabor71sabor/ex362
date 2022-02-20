@@ -1,0 +1,7 @@
+---
+- hosts: all:!register_hosts
+  gather_facts: True
+
+  roles:
+    - dnsmasq
+...

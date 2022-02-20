@@ -1,0 +1,8 @@
+[machine]
+leaseweb
+
+[virtual]
+
+[register_hosts]
+router.ultimum.dmz
+master.ultimum.dmz

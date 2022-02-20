@@ -1,0 +1,26 @@
+---
+# vars file for dnsmasq
+dnsmasq_snapd: '/etc/dnsmasq.d'
+
+dnsmasq_domains:
+  local:
+    options:
+      - 'expand-hosts'
+      - 'local=/ultimum.dmz/'
+      - 'interface=enp2s0f0,virbr0,lo0'
+      - 'server=23.19.53.53'
+      - 'server=23.19.52.52'
+  idm:
+    server:
+      - '/idm.ultimum.net/10.0.2.10'
+      - '/idm.ultimum.net/10.0.2.20'
+      - '/2.0.10.in-addr.arpa/10.0.2.10'
+      - '/2.0.10.in-addr.arpa/10.0.2.20'
+  ultimum:
+    server:
+      - '/ultimum.net/10.0.1.10'
+      - '/ultimum.net/10.0.1.20'
+      - '/1.0.10.in-addr.arpa/10.0.1.10'
+      - '/1.0.10.in-addr.arpa/10.0.1.10'
+
+...

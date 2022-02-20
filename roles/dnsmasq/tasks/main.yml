@@ -1,0 +1,23 @@
+---
+# tasks file for dnsmasq
+- name: template | build snap-in files
+  ansible.builtin.template:
+    dest: "{{ dnsmasq_snapd }}/{{ item.key }}.conf"
+    group: root
+    mode: '0644'
+    owner: root
+    src: etc/dnsmasq.d/snapin.conf.j2
+  loop: "{{ lookup('dict', dnsmasq_domains) }}"
+  notify: Restart dnsmasq.service
+  become: True
+
+- name: lineinfile | Register new host
+  ansible.builtin.lineinfile:
+    insertafter: '### VMs ###'
+    line: "{{ hostvars[item]['hostsfile_entry'] }}"
+    path: /etc/hosts
+    regexp: "{{ hostvars[item]['hostsfile_entry'] }}"
+    state: present
+  loop: "{{ query('inventory_hostnames', 'register_hosts') }}" 
+  notify: Restart dnsmasq.service
+...
