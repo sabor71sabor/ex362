@@ -5,4 +5,7 @@ leaseweb
 
 [register_hosts]
 router.ultimum.dmz
-master.ultimum.dmz
+idm.ultimum.dmz
+replica1.ultimum.dmz
+replica2.ultimum.dmz
+ad.ultimum.dmz
